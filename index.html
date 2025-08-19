@@ -2,354 +2,112 @@
 <html lang="en" data-theme="light">
 
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Responsive Floating Nav</title>
-  <link rel="stylesheet" href="style.css" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POS Dashboard</title>
+  <link rel="stylesheet" href="pos.css">
   <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
-  <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
   <script src="https://cdn.lordicon.com/lordicon.js"></script>
-  <link rel="stylesheet" href="common.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 
 </head>
 
 <body>
-  <div class="header-wrapper">
-    <header class="header" id="mainHeader">
-      <div class="logo">
-        <span class="logo-text">
-          <sup><strong><b>CHINA TOWN</b></strong></sup><sub>Shop</sub>
-        </span>
-        <img src="assets/images/ChinaTown.png" alt="China Town Shop Logo" class="logo-img" />
-      </div>
 
-      <nav class="navbar" id="navbar">
-        <a href="index.html">Home</a>
-        <a href="brand.html">Brands</a>
-        <a href="products.html">Products</a>
-        <a href="wholesale.html">Wholesale</a>
-        <a href="make-a-wish.html">Make a Wish</a>
-      </nav>
-
-
-      <div class="controls">
-        <button class="icon-btn desktop-only" id="categoryBtnInside">
-          <img src="assets/icons/categories.png" class="icon-img" alt="Category Icon">
-        </button>
-
-        <button class="icon-btn" id="themeToggleIcon">
-          <img src="assets/icons/moon.png" alt="Toggle Theme" class="icon-img" id="themeIconImg">
-        </button>
-
-
-
-        <button class="icon-btn desktop-only" id="userBtnInside">
-          <img src="assets/icons/user.png" class="icon-img" alt="User Icon">
-        </button>
-
-
-
-        <button class="icon-btn mobile-only" id="menuToggle">
-          <img src="assets/icons/menu.png" class="icon-img" alt="Menu Icon">
-        </button>
-      </div>
-    </header>
-  </div>
-
-
-
-
-  <div id="loginPopup" class="login-popup">
-    <div class="popup-content">
-      <h2>Login</h2>
-      <button onclick="loginGoogle()">Sign in with Google</button>
-      <button onclick="loginFacebook()">Sign in with Facebook</button>
-
-      <p>Or verify with WhatsApp/Telegram before ordering</p>
-      <button onclick="closeLoginPopup()">Close</button>
-    </div>
-  </div>
-
-
-
-<div id="userDrawer" class="user-drawer">
-  <button class="drawer-close-btn" onclick="closeUserDrawer()">×</button>
-  <div class="drawer-content">
-    <div class="profile-header">
-      <img id="drawerProfileImg" class="drawer-profile-img" src="" alt="Profile Picture" />
-      <div class="profile-info">
-        <h3><input type="text" id="drawerName" placeholder="Full Name" /></h3>
-        <p id="drawerEmail">Email</p>
-      </div>
-    </div>
-
-    <form id="userInfoForm" onsubmit="event.preventDefault(); saveUserInfo();">
-      <label for="userBirthday">Birthday:</label>
-      <input type="date" id="userBirthday" />
-
-      <label for="userGender">Gender:</label>
-      <select id="userGender" aria-label="Select Gender">
-        <option value="" disabled selected>Select gender</option>
-        <option value="Male">Male</option>
-        <option value="Female">Female</option>
-        <option value="Other">Other</option>
-        <option value="Prefer not to say">Prefer not to say</option>
-      </select>
-
-      <label for="userPhone">Phone Number (verified via WhatsApp/Telegram):</label>
-      <input id="userPhone" type="tel" placeholder="+880..." />
-
-      <label for="userAddress">Address:</label>
-      <textarea id="userAddress" placeholder="Enter your address"></textarea>
-
-      <div class="button-group">
-        <button type="submit" class="save-btn">Save</button>
-        <button type="button" class="verify-btn" onclick="verifyPhone()">Verify Phone</button>
-      </div>
-    </form>
-
-    <hr />
-
-    <button class="logout-btn" onclick="logoutUser()">Logout</button>
-  </div>
-</div>
-<div id="drawerOverlay" class="drawer-overlay" onclick="closeUserDrawer()"></div>
-
-
-
-
-
-
-  <div id="categoryDrawer">
-    <header>
-      Category
-      <button id="closeCategoryDrawer" aria-label="Close category drawer">&times;</button>
-    </header>
-
-    <div class="category-content">
-      <div id="subcategoryHeader">
-        <button id="backToMain">&larr;</button>
-        <span id="selectedCategoryName"></span>
-      </div>
-
-      <ul id="mainCategoryList"></ul>
-      <ul id="subcategoryList"></ul>
-    </div>
-  </div>
-
-  <div id="overlay" onclick="closeCategoryDrawerFn()"></div>
-  <button class="floating-close" onclick="closeCategoryDrawerFn()">×</button>
-
-
-
-  <!-- Floating Close Button -->
-  <button id="closeCategoryDrawer" class="floating-close" onclick="closeDrawer()">×</button>
-
-
-
-
-
-<div id="drawerOverlay" class="drawer-overlay" onclick="closeUserDrawer()"></div>
-
-  <div class="mobile-drawer" id="mobileDrawer">
-    <button id="closeDrawer" class="drawer-close">&times;</button>
-    <a href="index.html">Home</a>
-    <a href="brand.html">Brands</a>
-    <a href="products.html">Products</a>
-    <a href="wholesale.html">Wholesale</a>
-    <a href="make-a-wish.html">Make a Wish</a>
-  </div>
-
-  <main class="content">
-    <section class="custom-section">
-      <div class="main-layout">
-        <div class="big-box">
-          <div class="fade-slider" id="fadeSlider">
-            <img src="assets/images/banner1.png" class="fade-slide active" alt="Image 1">
-            <img src="assets/images/banner2.png" class="fade-slide" alt="Image 2">
-            <img src="assets/images/banner3.png" class="fade-slide" alt="Image 3">
-
-            <!-- Button for Slide 1 -->
-            <a href="products.html" class="shop-now-btn shop-now-left active">Shop Now</a>
-
-            <!-- Button for Slide 2 -->
-            <a href="products.html" class="shop-now-btn shop-now-right">Shop Now</a>
-          </div>
-        </div>
-
-
-        <!-- <div class="small-box-container">
-          <div class="small-box">
-            <h3>Small Box 1</h3>
-            <p>Some quick info here.</p>
-          </div>
-          <div class="small-box">
-            <h3>Small Box 2</h3>
-            <p>Some more info here.</p>
-          </div>
-        </div> -->
-      </div>
-    </section>
-  </main>
-
-
-  <section class="service-section compact">
-    <h2 class="service-title">What We Offer</h2>
-    <div class="service-grid">
-      <div class="service-item">
-        <i class="fas fa-store service-icon"></i>
-        <p><strong>Physical Store:</strong> Visit us for real product experience and quick purchases.</p>
-      </div>
-      <div class="service-item">
-        <i class="fas fa-shopping-cart service-icon"></i>
-        <p><strong>Online Shop:</strong> Easy online shopping with fast delivery and secure payment.</p>
-      </div>
-      <div class="service-item">
-        <i class="fas fa-gift service-icon"></i>
-        <p><strong>Make a Wish:</strong> Request any product and we’ll import it from China affordably.</p>
-      </div>
-    </div>
-  </section>
-
-
-  <section class="counter-section">
-    <div class="counter-title-wrapper">
-      <h2 class="counter-title">
-        Trusted by thousands
-        <img src="assets/images/logo.png" alt="star" class="inline-icon" />
-        growing with every day.
-      </h2>
-
-      <div class="counter-grid">
-        <div class="counter-item">
-          <h3>Partnered Brands</h3>
-          <p id="brandCount">45</p>
-        </div>
-        <div class="counter-item">
-          <h3>Total Products</h3>
-          <p id="productCount">4500+</p>
-        </div>
-        <div class="counter-item">
-          <h3>Happy Customers</h3>
-          <p id="customerCount">178</p>
-        </div>
-        <div class="counter-item">
-          <h3>Wishlist Deliveries</h3>
-          <p id="deliveryCount">45</p>
-        </div>
-      </div>
-  </section>
-
-
-
-  <section class="category-section">
-    <h2 class="section-title">Explore Our Categories</h2>
-    <div id="masonryGrid" class="masonry-grid"></div>
-    <button id="showMoreBtn">Show More</button>
-  </section>
-
-
-
-
-
-
-  <!-- 🔽 Product Slider Section -->
-  <section class="product-slider">
-    <h2 style="text-align:center;">Featured Products</h2>
-    <div class="slider-container">
-      <div class="slider-track" id="slider-track"></div>
-    </div>
-  </section>
-
-
-
-
-
-
-
-  <button class="icon-btn floating-btn left" id="floatingCategory">
-    <img src="assets/icons/categories.png" class="icon-img" alt="Category Icon">
-  </button>
-
-  <button class="icon-btn floating-btn right" data-btn="userBtnInside" id="floatingUser">
-    <img src="assets/icons/user.png" class="icon-img" alt="User Icon">
-  </button>
-
-
-  <footer class="site-footer">
-    <div class="footer-container">
-      <div class="footer-brand">
-        <h4>China Town Shop</h4>
-        <p>Your one-stop shop for quality and affordability.</p>
-      </div>
-
-      <div class="footer-row">
-        <div class="footer-col" style="display: flex; justify-content:center; align-items: center;">
-          <img src="assets/images/logo.png" style="width: 140px; height:140px;">
-        </div>
-
-
-        <div class="footer-col">
-          <h4>Quick Links</h4>
-          <ul>
-            <li><a href="index.html">Home</a></li>
-            <li><a href="brand.html">Brand</a></li>
-            <li><a href="products.html">Product</a></li>
-            <li><a href="wholesale.html">Wholesale</a></li>
-            <li><a href="wish.html">Make a Wish</a></li>
-          </ul>
-        </div>
-
-        <div class="footer-col">
-          <h4>Customer Service</h4>
-          <ul>
-            <li><a href="#">FAQ</a></li>
-            <li><a href="#">Returns</a></li>
-            <li><a href="#">Shipping Info</a></li>
-            <li><a href="#">Track Order</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <h4>Follow Us</h4>
-          <div class="social-icons">
-            <a href="https://www.facebook.com/profile.php?id=61573035666869">
-              <lord-icon src="https://cdn.lordicon.com/lplofcfe.json" trigger="hover"
-                colors="primary:#e83a30,secondary:#1663c7">
+  <div class="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar expanded">
+      <div class="sidebar-toggle" onclick="toggleSidebar()">☰</div>
+      <ul class="nav">
+        <li>
+          <a href="#" data-page="home">
+            <span class="icon"><lord-icon src="https://cdn.lordicon.com/jeuxydnh.json" trigger="hover" stroke="bold"
+                colors="primary:#c71f16,secondary:#e83a30" style="width:25px;height:25px; margin-right: 10px;">
               </lord-icon>
-            </a>
-            <a href="https://wa.me/+8801333180868">
-              <lord-icon src="https://cdn.lordicon.com/dnphlhar.json" trigger="hover"
-                colors="primary:#16c72e,secondary:#e83a30">
+            </span>
+            <span class="text">Home</span>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle"><span class="icon">
+              <lord-icon src="https://cdn.lordicon.com/uisoczqi.json" trigger="hover" stroke="bold"
+                colors="primary:#c71f16,secondary:#e83a30" style="width:25px;height:25px; margin-right: 10px;">
               </lord-icon>
-            </a>
-          </div>
+            </span><span class="text">Products</span></a>
+          <ul class="submenu">
+            <li><a href="#" data-page="add-product">Add Product</a></li>
+            <li><a href="#" data-page="edit-product">Edit Product</a></li>
+            <li><a href="#" data-page="list-products">List of Products</a></li>
+            <li><a href="#" data-page="category">Category</a></li>
+            <li><a href="#" data-page="brand">Brand</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle"><span class="icon">
+
+              <lord-icon src="https://cdn.lordicon.com/vqhlecvy.json" trigger="hover" stroke="bold"
+                colors="primary:#c71f16,secondary:#e83a30" style="width:25px;height:25px; margin-right: 10px;">
+              </lord-icon>
+            </span><span class="text">Customers</span></a>
+          <ul class="submenu">
+            <li><a href="#" data-page="customer-details">Customer Details</a></li>
+            <li><a href="#" data-page="membership">Membership</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" data-page="pos"><span class="icon">
+              <lord-icon src="https://cdn.lordicon.com/ytklkgsc.json" trigger="hover" stroke="bold"
+                colors="primary:#c71f16,secondary:#e83a30" style="width:25px;height:25px; margin: right 10px;">
+              </lord-icon>
+            </span><span class="text">POS</span></a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <div class="logo">
+          <span class="logo-text">
+            <sup><strong><b>CHINA TOWN</b></strong></sup><sub>Shop</sub>
+          </span>
+          <img src="assets/images/ChinaTown.png" alt="China Town Shop Logo" class="logo-img" />
+        </div>
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search...">
         </div>
 
-      </div>
+        <div class="header-actions">
+          <!-- Theme toggle buttons -->
+          <button id="theme-light-btn" onclick="toggleTheme()"
+            style="display: none; border:none; background:none; font-size:18px; cursor:pointer;">🌞</button>
+          <button id="theme-dark-btn" onclick="toggleTheme()"
+            style="border:none; background:none; font-size:18px; cursor:pointer;">🌙</button>
 
-      <div class="footer-newsletter">
-        <h4>Subscribe</h4>
-        <form>
-          <input type="email" placeholder="Enter your email" />
-          <button type="submit">Join</button>
-        </form>
-      </div>
-    </div>
-    <div class="footer-bottom">
-      <p>© 2025 China Town Shop. All rights reserved.</p>
-    </div>
-  </footer>
+          <div class="user-info">Admin</div>
+          <div class="settings" id="settings-btn">
+            <img src="assets/icons/setting.png" style="width: 20px; height: 20px;">
+            <ul class="settings-menu" id="settings-menu">
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Preferences</a></li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
 
-  <script src="script.js"></script>
-  <script src="route.js" defer></script>
+      <section class="body-content mainbody" id="content">
+        <h1>Welcome to the POS Dashboard</h1>
+        <p>Select an option from the sidebar to begin.</p>
+      </section>
+    </main>
 
-
-  <script type="module" src="auth.js"></script>
-
+  </div>
+  <script src="pos_functions.js"></script>
+  <script src="pos.js"></script>
 </body>
 
 </html>
