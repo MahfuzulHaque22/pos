@@ -243,10 +243,16 @@ function printReceipt() {
 // Update stock in Sheet
 async function updateStockInSheet(productCode, newStock) {
   try {
+    const formData = new URLSearchParams();
+    formData.append("code", productCode);
+    formData.append("newStock", newStock);
+
     const res = await fetch(appsScriptEndpoint, {
       method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ code: productCode, newStock: newStock })
+      headers: {
+        "Content-Type": "application/x-www-form-urlencoded"
+      },
+      body: formData
     });
 
     const data = await res.json();
@@ -255,6 +261,7 @@ async function updateStockInSheet(productCode, newStock) {
     console.error("Error updating stock:", err);
   }
 }
+
 
 
 // INITIAL
@@ -354,4 +361,5 @@ function generateReceipt() {
 
   document.getElementById("receipt").innerHTML = receiptHTML;
 }
+
 
