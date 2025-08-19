@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>POS Dashboard</title>
+  <link rel="stylesheet" href="pos.css">
+  <link href="https://fonts.googleapis.com/css2?family=Jost&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Raleway&display=swap" rel="stylesheet">
+  <script src="https://cdn.lordicon.com/lordicon.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+</head>
+
+<body>
+
+  <div class="dashboard">
+
+    <!-- Sidebar -->
+    <aside class="sidebar expanded">
+      <div class="sidebar-toggle" onclick="toggleSidebar()">☰</div>
+      <ul class="nav">
+        <li>
+          <a href="#" data-page="home">
+            <span class="icon"><lord-icon src="https://cdn.lordicon.com/jeuxydnh.json" trigger="hover" stroke="bold"
+                colors="primary:#c71f16,secondary:#e83a30" style="width:25px;height:25px; margin-right: 10px;">
+              </lord-icon>
+            </span>
+            <span class="text">Home</span>
+          </a>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle"><span class="icon">
+              <lord-icon src="https://cdn.lordicon.com/uisoczqi.json" trigger="hover" stroke="bold"
+                colors="primary:#c71f16,secondary:#e83a30" style="width:25px;height:25px; margin-right: 10px;">
+              </lord-icon>
+            </span><span class="text">Products</span></a>
+          <ul class="submenu">
+            <li><a href="#" data-page="add-product">Add Product</a></li>
+            <li><a href="#" data-page="edit-product">Edit Product</a></li>
+            <li><a href="#" data-page="list-products">List of Products</a></li>
+            <li><a href="#" data-page="category">Category</a></li>
+            <li><a href="#" data-page="brand">Brand</a></li>
+          </ul>
+        </li>
+        <li class="dropdown">
+          <a href="#" class="dropdown-toggle"><span class="icon">
+
+              <lord-icon src="https://cdn.lordicon.com/vqhlecvy.json" trigger="hover" stroke="bold"
+                colors="primary:#c71f16,secondary:#e83a30" style="width:25px;height:25px; margin-right: 10px;">
+              </lord-icon>
+            </span><span class="text">Customers</span></a>
+          <ul class="submenu">
+            <li><a href="#" data-page="customer-details">Customer Details</a></li>
+            <li><a href="#" data-page="membership">Membership</a></li>
+          </ul>
+        </li>
+        <li>
+          <a href="#" data-page="pos"><span class="icon">
+              <lord-icon src="https://cdn.lordicon.com/ytklkgsc.json" trigger="hover" stroke="bold"
+                colors="primary:#c71f16,secondary:#e83a30" style="width:25px;height:25px; margin: right 10px;">
+              </lord-icon>
+            </span><span class="text">POS</span></a>
+        </li>
+      </ul>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <header class="header">
+        <div class="logo">
+          <span class="logo-text">
+            <sup><strong><b>CHINA TOWN</b></strong></sup><sub>Shop</sub>
+          </span>
+          <img src="assets/images/ChinaTown.png" alt="China Town Shop Logo" class="logo-img" />
+        </div>
+        <div class="search-bar">
+          <i class="fas fa-search"></i>
+          <input type="text" placeholder="Search...">
+        </div>
+
+        <div class="header-actions">
+          <!-- Theme toggle buttons -->
+          <button id="theme-light-btn" onclick="toggleTheme()"
+            style="display: none; border:none; background:none; font-size:18px; cursor:pointer;">🌞</button>
+          <button id="theme-dark-btn" onclick="toggleTheme()"
+            style="border:none; background:none; font-size:18px; cursor:pointer;">🌙</button>
+
+          <div class="user-info">Admin</div>
+          <div class="settings" id="settings-btn">
+            <img src="assets/icons/setting.png" style="width: 20px; height: 20px;">
+            <ul class="settings-menu" id="settings-menu">
+              <li><a href="#">Profile</a></li>
+              <li><a href="#">Preferences</a></li>
+              <li><a href="#">Logout</a></li>
+            </ul>
+          </div>
+        </div>
+      </header>
+
+      <section class="body-content mainbody" id="content">
+        <h1>Welcome to the POS Dashboard</h1>
+        <p>Select an option from the sidebar to begin.</p>
+      </section>
+    </main>
+
+  </div>
+  <script src="pos_functions.js"></script>
+  <script src="pos.js"></script>
+</body>
+
+</html>
